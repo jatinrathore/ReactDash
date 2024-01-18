@@ -11,7 +11,7 @@ export interface Department {
   sub_departments: SubDepartment[];
 }
 
-const metaData: Department[] = [
+const mockData: Department[] = [
   {
     id: 1,
     department: "Customer Service",
@@ -88,4 +88,4 @@ const metaData: Department[] = [
   },
 ];
 
-export default metaData;
+export default mockData;

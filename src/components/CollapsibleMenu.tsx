@@ -7,14 +7,14 @@ import {
   Checkbox,
 } from "@mui/material";
 import { FaPlus, FaMinus } from "react-icons/fa6";
-import metaData, { Department } from "../data/metadata";
+import mockData, { Department } from "../mock/mockdata";
 
 const CollapsibleMenu = () => {
   const [expandedAccordion, setExpandedAccordion] = useState<number | false>(
     false
   );
 
-  const [data, setData] = useState<Department[]>(metaData);
+  const [data, setData] = useState<Department[]>(mockData);
 
   const updateMainDeptCheckBox = (dept: Department) => {
     if (dept.sub_departments) {
@@ -74,29 +74,29 @@ const CollapsibleMenu = () => {
 
   return (
     <Box margin="3rem 0 2rem 0" width="50%">
-      {data.map((metaData) => (
+      {data.map((mockData) => (
         <Accordion
-          expanded={expandedAccordion === metaData.id}
-          onChange={handleChange(metaData.id)}
-          key={metaData.id}
+          expanded={expandedAccordion === mockData.id}
+          onChange={handleChange(mockData.id)}
+          key={mockData.id}
         >
           <AccordionSummary
             expandIcon={
-              expandedAccordion === metaData.id ? <FaMinus /> : <FaPlus />
+              expandedAccordion === mockData.id ? <FaMinus /> : <FaPlus />
             }
             aria-controls="panel1-content"
             id="panel1-header"
           >
             <p style={{ margin: 0 }}>
               <Checkbox
-                onChange={() => handleCheckBoxChange(metaData.id)}
-                checked={metaData.isChecked}
+                onChange={() => handleCheckBoxChange(mockData.id)}
+                checked={mockData.isChecked}
               />
-              {metaData.department}
+              {mockData.department}
             </p>
           </AccordionSummary>
           <AccordionDetails>
-            {metaData.sub_departments.map((subDept) => (
+            {mockData.sub_departments.map((subDept) => (
               <p key={subDept.id} style={{ margin: 0, marginLeft: "20px" }}>
                 <Checkbox
                   onChange={() => handleSubCheckBoxChange(subDept.id)}
