@@ -1,5 +1,35 @@
 # React + TypeScript + Vite
 
+# ReactDash 
+
+## How to deploy and run the service
+
+<details>
+<summary>Manually install with NPM and all...</summary>
+
+First, clone the repo and go to root of repo
+
+```bash
+git clone https://github.com/jatinrathore/ReactDash.git
+cd reactDash
+npm install
+```
+
+```bash
+npm start
+```
+or 
+
+```bash
+npm run dev
+```
+
+</details>
+
+live link :- https://jatinrathore-react-dash.netlify.app/
+
+
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:
