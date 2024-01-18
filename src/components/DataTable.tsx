@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import { DataGrid, GridColDef, GridRenderCellParams } from "@mui/x-data-grid";
+import { Skeleton } from "@mui/material";
 
 interface FetchedData {
   id: number;
@@ -14,6 +15,7 @@ const DataTable = () => {
 
   //For managing errors during a fetch request.
   const [error, setError] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const columns: GridColDef[] = [
     { field: "id", headerName: "ID", width: 90 },
@@ -41,8 +43,8 @@ const DataTable = () => {
         const response = await axios.get(
           "https://jsonplaceholder.typicode.com/posts"
         );
-
         setData(response.data);
+        setIsLoading(false);
       } catch (error) {
         setError(true);
       }
@@ -52,6 +54,9 @@ const DataTable = () => {
   }, []);
 
   if (error) return <p>Error in Fetchin data...</p>;
+
+  if (isLoading)
+    return <Skeleton variant="rectangular" width="100%" height={400} />;
 
   return (
     <Box sx={{ height: 400, width: "100%" }}>
