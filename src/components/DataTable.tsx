@@ -12,6 +12,7 @@ interface FetchedData {
 const DataTable = () => {
   const [data, setData] = useState<FetchedData[]>([]);
 
+  //For managing errors during a fetch request.
   const [error, setError] = useState(false);
 
   const columns: GridColDef[] = [

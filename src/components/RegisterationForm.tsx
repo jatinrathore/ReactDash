@@ -30,12 +30,14 @@ const RegistrationForm = () => {
     },
   }));
 
+  //Managing a text field to store values provided by the user in a state variable.
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
 
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
+  //Function for validating the email provided by the user.
   const isValidEmail = (email: string): boolean => {
     // Simple email validation regex
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -48,6 +50,7 @@ const RegistrationForm = () => {
     const Users = "react-dash";
 
     const customId = "id";
+    // Validating the name provided by the user
     if (formData.name.length < 4)
       return toast.warn(
         "Please provide a valid name. It must be at least 4 characters long",
@@ -57,6 +60,7 @@ const RegistrationForm = () => {
         }
       );
 
+    // Validating the phone provided by the user
     if (formData.phone.length < 10)
       return toast.warn(
         "Please provide a valid phone number. It must be 10 digits long.",
@@ -66,14 +70,15 @@ const RegistrationForm = () => {
         }
       );
 
+    // Validating the email provided by the user.
     if (!isValidEmail(formData.email))
       return toast.warn("Please provide a valid email address.", {
         style: { backgroundColor: "#F24C3D" },
         toastId: customId,
       });
 
+    //Saving user's details in local storage
     localStorage.setItem(Users, JSON.stringify(formData));
-
     toast.info("User successfully registered. Welcome aboard!");
 
     navigate("/home");

@@ -16,6 +16,7 @@ const CollapsibleMenu = () => {
 
   const [data, setData] = useState<Department[]>(mockData);
 
+  //Check if all sub-departments are selected, so the main department can be automatically checked.
   const updateMainDeptCheckBox = (dept: Department) => {
     if (dept.sub_departments) {
       const allSubDeptsChecked = dept.sub_departments.every(
@@ -25,11 +26,13 @@ const CollapsibleMenu = () => {
     }
   };
 
+  //Handling accordion change for icon rendering
   const handleChange =
     (panel: number) => (_event: React.SyntheticEvent, isExpanded: boolean) => {
       setExpandedAccordion(isExpanded ? panel : false);
     };
 
+  //Handling checkboxes of departments
   const handleCheckBoxChange = (id: number) => {
     const updatedData = data.map((dept) => {
       if (dept.id === id) {
@@ -51,6 +54,7 @@ const CollapsibleMenu = () => {
     setData(updatedData);
   };
 
+  //Handling checkboxes of sub-departments
   const handleSubCheckBoxChange = (id: number) => {
     const updatedData = data.map((dept) => {
       const updatedDept = { ...dept };
@@ -92,7 +96,10 @@ const CollapsibleMenu = () => {
                 onChange={() => handleCheckBoxChange(mockData.id)}
                 checked={mockData.isChecked}
               />
-              {mockData.department}
+              {mockData.department +
+                " (" +
+                mockData.sub_departments_count +
+                ")"}
             </p>
           </AccordionSummary>
           <AccordionDetails>
