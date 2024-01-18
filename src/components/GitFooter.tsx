@@ -26,7 +26,7 @@ const GitFooter = () => {
           </Link>
         </p>
       </div>
-      <Link href="https://github.com/jatinrathore" target="_blank">
+      <Link href="https://github.com/jatinrathore/ReactDash" target="_blank">
         <FaSquareGithub size="30px" color="black" />
       </Link>
     </div>
